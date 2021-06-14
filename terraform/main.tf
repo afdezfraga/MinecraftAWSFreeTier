@@ -10,7 +10,7 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = var.aws_region
-  shared_credential_file = "/home/" + var.user_name + "/.aws/credentials"
+  shared_credential_file = "/home/${var.user_name}/.aws/credentials"
   profile = "minecraft"
 }
 
