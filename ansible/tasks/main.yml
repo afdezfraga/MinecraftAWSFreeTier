@@ -1,0 +1,32 @@
+- name: Creates directory for Minecraft
+  file:
+    path: /usr/games/minecraft
+    state: directory
+    mode: '0755'
+
+- name: Download Minecraft
+  get_url:
+    url: https://launcher.mojang.com/v1/objects/0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e/server.jar
+    dest: /usr/games/minecraft/server.jar
+
+- name: Copy Minecraft start script
+  copy:
+    src: files/minecraft-start.sh
+    dest: /usr/games/minecraft/minecraft-start.sh
+    mode: '0755'
+
+- name: Copy Minecraft service definition
+  copy:
+    src: files/minecraft.service
+    dest: /etc/systemd/system/minecraft.service
+
+- name: Accept EULA
+  copy:
+    src: files/eula.txt
+    dest: /usr/games/minecraft/eula.txt
+
+- name: Start minecraft as a service
+  service:
+    name: minecraft
+    state: started
+    enabled: yes

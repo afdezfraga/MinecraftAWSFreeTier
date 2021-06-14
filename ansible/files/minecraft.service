@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft Test Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory=/usr/games/minecraft
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/games/minecraft/minecraft-start.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,46 @@
+- name: Creates directory for Java
+  file:
+    path: /usr/java/oracle
+    state: directory
+
+- name: Copy Java
+  copy:
+    src: files/jdk-16.0.1_linux-x64_bin.tar.gz
+    dest: /usr/java/oracle/jdk-16.0.1_linux-x64_bin.tar.gz
+
+- name: Uncompress Java
+  unarchive:
+    src: /usr/java/oracle/jdk-16.0.1_linux-x64_bin.tar.gz
+    dest: /usr/java/oracle
+
+- name: Remove File
+  file:
+    path: /usr/java/oracle/jdk-16.0.1_linux-x64_bin.tar.gz
+    state: absent
+
+- name: Remove Java alternatives
+  file:
+    path: /etc/alternatives/java
+    state: absent
+
+- name: Create new Java alternatives
+  file:
+    src: /usr/java/oracle/{{JAVA_VERSION}}/bin/java
+    dest: /etc/alternatives/java
+    state: link
+
+- name: Create Java profile file
+  file:
+    path: /etc/profile.d/java.sh
+    state: touch
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Set up enviroment variables
+  lineinfile:
+    path: "/etc/profile.d/java.sh"
+    line: "{{ item }}"
+  loop:
+    - export JAVA_HOME=/usr/java/oracle/{{JAVA_VERSION}}
+    - export PATH=${JAVA_HOME}/bin:${PATH}
