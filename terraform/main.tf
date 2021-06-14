@@ -29,6 +29,11 @@ variable "minecraft_keypair" {
   type = string
 }
 
+variable "ubuntu_server_ami" {
+  description = "AWS ami for ubuntu server"
+  type = string
+}
+
 resource "aws_security_group" "allow_ssh_and_minecraft" {
   name = "allow_ssh_and_minecraft"
   description = "Allow ssh trafic and minecraft conections"
