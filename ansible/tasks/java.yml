@@ -3,14 +3,9 @@
     path: /usr/java/oracle
     state: directory
 
-- name: Copy Java
-  copy:
-    src: files/jdk-16.0.1_linux-x64_bin.tar.gz
-    dest: /usr/java/oracle/jdk-16.0.1_linux-x64_bin.tar.gz
-
 - name: Uncompress Java
   unarchive:
-    src: /usr/java/oracle/jdk-16.0.1_linux-x64_bin.tar.gz
+    src: files/jdk-16.0.1_linux-x64_bin.tar.gz
     dest: /usr/java/oracle
 
 - name: Remove File
