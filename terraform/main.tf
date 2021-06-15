@@ -62,7 +62,7 @@ resource "aws_security_group" "allow_ssh_and_minecraft" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags{
+  tags = {
     Name = "allow_ssh_and_minecraft"
   }
 }
@@ -74,7 +74,7 @@ resource "aws_instance" "minecraftServer" {
   associate_public_ip_address = "true"
   security_groups = [aws_security_group.allow_ssh_and_minecraft.name]
 
-  tags{
+  tags = {
     Name = "MinecraftServer"
   }
 }
