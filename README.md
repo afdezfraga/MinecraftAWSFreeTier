@@ -10,7 +10,7 @@ La dificultad extra que trae esta versión es que requiere Java 16, que no se pu
 
  - Instalar [Terraform](https://www.terraform.io/downloads.html "Página de descarga de Terraform").
  - Instalar [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html "Página de instalación de Ansible"): ` pip install ansible`.
- - Crear una [cueata gratuita en AWS](https://aws.amazon.com/es/free/) (una cuenta nueva tiene acceso al Free Tier durante 12 meses).
+ - Crear una [cuenta gratuita en AWS](https://aws.amazon.com/es/free/) (una cuenta nueva tiene acceso al Free Tier durante 12 meses).
 
  ## Pasos de configuración iniciales
 
