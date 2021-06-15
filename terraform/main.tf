@@ -68,7 +68,7 @@ resource "aws_security_group" "allow_ssh_and_minecraft" {
 }
 
 resource "aws_instance" "minecraftServer" {
-  ami = ""
+  ami = var.ubuntu_server_ami
   instance_type = "t2.micro"
   key_name = var.minecraft_keypair
   associate_public_ip_address = "true"
